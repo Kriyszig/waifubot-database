@@ -46,7 +46,10 @@ if __name__ == "__main__":
                 # print(data['pictures'][0]['large'])
                 if('pictures' in data and len(data['pictures']) > 0):
                     outf = open('cleandata.csv', 'a')
-                    outf.write(characterId + "," + character[pos2 + 1:].replace('_', ' ') + "," + data['pictures'][0]['large'] + '\n')
+                    outf.write(characterId + " , " + character[pos2 + 1:].replace('_', ' '))
+                    for i in data['pictures']:
+                        outf.write(" , " + i['large'])
+                    outf.write("\n")
                     outf.close()
                 else:
                     outf = open('unknownWaifu.csv', 'a')
@@ -54,8 +57,8 @@ if __name__ == "__main__":
                     outf.close()
                 time.sleep(2)
                 done += 1
-                print(done)
             cnt += 50
+            print(cnt)
     except KeyboardInterrupt:
         print(cnt)
     finally:
